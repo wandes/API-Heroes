@@ -1,10 +1,10 @@
 const app = require('../src/app')
 const http = require('http');
 const debug = require('debug')('nodestr:server');
+const cors = require('cors')
+const http_port = 8080;
 
-var http_port = 3001;
-
-var port = normalizePort(process.env.PORT || http_port);
+const port =  normalizePort(process.env.PORT || http_port);
 
 app.set('port', port);
 
@@ -29,5 +29,5 @@ function normalizePort(val) {
 const server = http.createServer(app);
 
 server.listen(port);
-
+app.use(cors())
 console.log('API rodando na porta ' + port);
