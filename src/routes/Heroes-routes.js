@@ -4,6 +4,7 @@ const controller = require('../controllers/Heroes-controllers');
 
 //Listar
 router.get('/',controller.get);
+router.get('/:id',controller.getById);
 //Inserir
 router.post('/',controller.post);
 //Deletar
@@ -13,7 +14,7 @@ router.put('/:id',controller.put);
 
 /*
 router.get('/:slug',controller.getBySlug);
-router.get('/admin/:id',controller.getById);
+
 router.get('/tags/:tag',controller.getByTag); */
 
 module.exports = router

@@ -17,7 +17,18 @@ exports.get = (req, res, next)=>{
         res.status(400).send({erro});
     
     });
-} 
+}  
+
+exports.getById = (req, res, next)=>{
+    Heroes
+     .findById(req.params.id)
+     .then((data)=>{   
+         res.status(201).send({data});   
+     }).catch((erro)=>{   
+         res.status(400).send({erro});
+     
+     });
+ }
 
 // (INSERT) Inserindo um herói
 
@@ -44,7 +55,7 @@ exports.post = (req, res, next) =>{
     //(UPDATE) Atualizando um herói
   
     exports.put = (req, res, next)=>{
-        heroi
+        Heroes
         .findByIdAndUpdate(req.params.id,{
             $set: {
                 publishing_company : req.body.publishing_company,
@@ -68,7 +79,7 @@ exports.post = (req, res, next) =>{
     } 
   //(DELETE) Deletando um herói
   exports.delete = (req, res, next)=>{
-    heroi
+    Heroes
     .findByIdAndRemove(req.params.id)
     // ou .findByIdAndRemove(req.body.id)
     .then(()=>{   
@@ -83,6 +94,8 @@ exports.post = (req, res, next) =>{
     
     });
 }
+
+
 
 /* Métodos de SELECT
     exports.getByTag = (req, res, next)=>{
@@ -122,16 +135,7 @@ exports.post = (req, res, next) =>{
     }
 
  
-    exports.getById = (req, res, next)=>{
-        Produto
-        .findById(req.params.id)
-        .then((data)=>{   
-            res.status(201).send({data});   
-        }).catch((erro)=>{   
-            res.status(400).send({erro});
-        
-        });
-    }
+  
 
 exports.delete = (req, res, next) =>{
     res.status(200).send(req.body);
