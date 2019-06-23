@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser'); 
 const app = express();
 const router = express.Router();
+const cors = require('cors')
 
 //Abrindo conexao com o mongodb
 mongoose.connect('mongodb+srv://deploy:uploaddeploy@cluster0-ahrpu.azure.mongodb.net/test?retryWrites=true&w=majority' ,{ useNewUrlParser: true }).then(({})=>{
@@ -19,6 +20,8 @@ const index = require('./routes/index')
 const heroRoute = require('./routes/Heroes-routes')
 
 
+app.use(cors())
+
 //Convertendo o corpo da requisição para json
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : false}));
@@ -27,4 +30,5 @@ app.use(bodyParser.urlencoded({ extended : false}));
 app.use('/', index); 
 app.use('/heroes', heroRoute); 
 
-module.exports = app;
+module.exports = app; 
+
