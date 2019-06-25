@@ -10,7 +10,7 @@ exports.get = (req, res, next)=>{
     
     .then((data)=>{
     
-        res.status(201).send({data});
+        res.status(201).send(data);
     
     }).catch((erro)=>{
     
